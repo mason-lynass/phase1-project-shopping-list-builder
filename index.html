@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>Grocery List Helper</header>
-    <div id="top-section">
+    <div id="top-section" class="border">
         <div id="shopping-list">
             <h2>My Shopping List</h2>
             <ul>
@@ -18,7 +18,7 @@
                 <li>4</li>
             </ul>
         </div>
-        <div id="one-recipe">
+        <div id="one-recipe" class="border">
             <div id="orInstructions">
                 <h2>Instructions</h2>
                 <!--instructions for one recipe go here-->
@@ -31,20 +31,24 @@
             </div>
         </div>
     </div>
-    <div id="all-recipes">
+    <div id="all-recipes" class="border">
         <!-- recipe cards go here -->
     </div>
-    <div id="new-recipe">
+    <div id="new-recipe" class="border">
         <form id="new-recipe-form">
-            <div id="nrIngredients">
-                <label>Ingredients</label>
+            <div id="nrAllIngredients">
+                <h2>Ingredients</h2>
                 <input class="nrIngredient">
                 <input class="nrIngredient">
                 <input class="nrIngredient">
                 <input class="nrIngredient">
             </div>
-            <input class="nrInstructions">
+            <div id="nrInstructions" class="border">
+                <h2>Instructions</h2>
+                <input>
+            </div>
         </form>
     </div>
+    <script defer src="./styles.css"></script>
 </body>
 </html>

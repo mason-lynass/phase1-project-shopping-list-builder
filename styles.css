@@ -4,7 +4,11 @@ header {
     margin: 10px 0;
 }
 
-div {
+h2 {
+    text-align: center;
+}
+
+.border {
     border: 1px solid black;
 }
 
@@ -15,7 +19,6 @@ div {
 
 #shopping-list {
     width: 35%;
-    text-align: center;
 }
 
 #one-recipe {
@@ -33,8 +36,29 @@ div {
 #new-recipe-form {
     display: flex;
     flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.nrAllIngredients {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 40%;
 }
 
 .nrIngredient {
-    width: 400px;
+    width: 70%;
+    margin: 10px auto;
+}
+
+#nrInstructions {
+    width: 60%;
+}
+
+#nrInstructions input {
+    width: 70%;
+    height: 200px;
+    margin: 20px 100px;
 }
