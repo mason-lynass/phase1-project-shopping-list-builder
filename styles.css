@@ -1,0 +1,40 @@
+header {
+    text-align: center;
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+div {
+    border: 1px solid black;
+}
+
+#top-section {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#shopping-list {
+    width: 35%;
+    text-align: center;
+}
+
+#one-recipe {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    width: 65%;
+}
+
+#orInstructions, #orIngredients {
+    width: 50%;
+    text-align: center;
+}
+
+#new-recipe-form {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.nrIngredient {
+    width: 400px;
+}
