@@ -33,6 +33,39 @@ h2 {
     text-align: center;
 }
 
+/* CSS for the Saved Recipes */
+
+#all-saved-recipes {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: top;
+}
+
+.one-saved-recipe {
+    border: 1px solid black;
+    width: 350px;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+}
+
+.one-saved-recipe p {
+    font-size: 12px;
+}
+
+.one-saved-recipe img {
+    width: 200px;
+    height: 200px;
+}
+
+.iLFull {
+    font-size: 12px;
+    text-align: left;
+}
+
+/* CSS for the form */
+
 #new-recipe-form {
     display: flex;
     flex-flow: row nowrap;
