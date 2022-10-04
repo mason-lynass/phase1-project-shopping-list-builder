@@ -40,10 +40,12 @@ const renderOneRecipeCard = recipe => {
 
 
 function showDetails(recipe) {
+    const orContainer = document.getElementById('or-container')
     const oneRecipe = document.getElementById('one-recipe')
     const shoppingList = document.getElementById('shopping-list')
     const detailsInstructions = document.getElementById('orInstContent')
     const detailsIngredients = document.getElementById('orIngContent')
+    const activeButton = document.getElementById('sendToList-button')
 
     // use these classes to change container height
     oneRecipe.classList.remove('noInfo')
@@ -53,12 +55,21 @@ function showDetails(recipe) {
     // replaces content already in the section with emptiness, so that new text can be put it
     detailsInstructions.innerHTML = ''
     detailsIngredients.innerHTML = ''
+    if(activeButton){activeButton.remove()}
 
     // creating elements
     const recipeIngredientsList = document.createElement('ul')
     const recipeInstructions = document.createElement('p')
+    const addIngButton = document.createElement('input')
 
     recipeInstructions.textContent = recipe.instructions
+
+    addIngButton.type = 'submit'
+    addIngButton.className = 'orButton sendToList'
+    addIngButton.name = 'sendToList-button'
+    addIngButton.id = 'sendToList-button'
+    addIngButton.value = 'Add Ingredients to Shopping List'
+
     // iterating through the ingredients to store them all in recipeIngredientsList
     const rI = recipe.ingredients
     // // this needs to be a for loop because it's an array, not an object
@@ -75,7 +86,21 @@ function showDetails(recipe) {
     }
     detailsInstructions.append(recipeInstructions)
     detailsIngredients.append(recipeIngredientsList)
+    orContainer.append(addIngButton)
+
+    // send ingredients from one-recipe to shopping-list
+
+    addIngButton.addEventListener('click', e => addIngredientsToShoppingList())
+
+    function addIngredientsToShoppingList() {
+        const shoppingList = document.getElementById('shopping-list')
+        // this doesn't quite work yet, it deletes ingredients from the one-recipe
+        shoppingList.append(recipeIngredientsList)
+}  
 }
+
+
+
 
 
 // CSS related to the New Recipe Form

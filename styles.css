@@ -21,11 +21,14 @@ h2 {
     width: 35%;
 }
 
+#or-container {
+    width: 65%;
+}
+
 #one-recipe {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-evenly;
-    width: 65%;
 }
 
 #one-recipe p, #one-recipe li {
@@ -34,19 +37,22 @@ h2 {
     margin: 5px 20px;
 }
 
-
-
 .noInfo {
     height: 80px;
 }
 
 .hasInfo {
-    height: 300px;
+    height: auto;
 }
 
 #orInstructions, #orIngredients {
     width: 50%;
     text-align: center;
+}
+
+.sendToList {
+    display: block;
+    margin: 20px auto;
 }
 
 /* CSS for the Saved Recipes */
