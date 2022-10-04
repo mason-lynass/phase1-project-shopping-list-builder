@@ -40,17 +40,70 @@
     </div>
     <div id="new-recipe" class="border">
         <form id="new-recipe-form">
-            <div id="nrAllIngredients">
-                <h2>Ingredients</h2>
-                <input class="nrIngredient">
-                <input class="nrIngredient">
-                <input class="nrIngredient">
-                <input class="nrIngredient">
-            </div>
             <div id="nrInstructions" class="border">
-                <h2>Instructions</h2>
-                <input>
+                <h2>Add New Recipe</h2>
+                <label for="new-comment">Instructions: </label>
+                <br>
+                <textarea name="instructions"></textarea>
             </div>
+            <div id="nrAllIngredients">
+                <label for="ingredient-1">Ingredient 1: </label>
+                <input class="nrIngredient" name="ingredient-1">
+                <label for="qty-1">Qty: </label>
+                <input class="nrIngredient" name="qty-1">
+                <select name="measurements" id="dropdown-1">
+                    <option value="g">g</option>
+                    <option value="mL">mL</option>
+                    <option value=tsp">tsp</option>
+                    <option value=tbsp">tbsp</option>
+                </select>
+                <br>
+                <label for="ingredient-2">Ingredient 2: </label>
+                <input class="nrIngredient" name="ingredient-2">
+                <label for="qty-2">Qty: </label>
+                <input class="nrIngredient" name="qty-2">
+                <select name="measurements" id="dropdown-2">
+                    <option value="g">g</option>
+                    <option value="mL">mL</option>
+                    <option value=tsp">tsp</option>
+                    <option value=tbsp">tbsp</option>
+                </select>
+                <br>
+                <label for="ingredient-3">Ingredient 3: </label>
+                <input class="nrIngredient" name="ingredient-3">
+                <label for="qty-3">Qty: </label>
+                <input class="nrIngredient" name="qty-3">
+                <select name="measurements" id="dropdown-3">
+                    <option value="g">g</option>
+                    <option value="mL">mL</option>
+                    <option value=tsp">tsp</option>
+                    <option value=tbsp">tbsp</option>
+                </select>
+                <br>
+                <label for="ingredient-4">Ingredient 4: </label>
+                <input class="nrIngredient" name="ingredient-4">
+                <label for="qty-4">Qty: </label>
+                <input class="nrIngredient" name="qty-4">
+                <select name="measurements" id="dropdown-4">
+                    <option value="g">g</option>
+                    <option value="mL">mL</option>
+                    <option value=tsp">tsp</option>
+                    <option value=tbsp">tbsp</option>
+                </select>
+                <br>
+                <label for="ingredient-5">Ingredient 5: </label>
+                <input class="nrIngredient" name="ingredient-5">
+                <label for="qty-5">Qty: </label>
+                <input class="nrIngredient" name="qty-5">
+                <select name="measurements" id="dropdown-5">
+                    <option value="g">g</option>
+                    <option value="mL">mL</option>
+                    <option value=tsp">tsp</option>
+                    <option value=tbsp">tbsp</option>
+                </select>
+            </div>
+            <button class="more-ingredients">More Ingredients</button>
+            <input class="sub-btn" type="submit">
         </form>
     </div>
     <script defer src="./index.js"></script>
