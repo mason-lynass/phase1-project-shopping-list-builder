@@ -12,22 +12,23 @@
         <div id="shopping-list">
             <h2>My Shopping List</h2>
             <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
+                <!--this is where list elements go-->
+                <!--but we don't need to see any right now-->
+                <!--because they'll be generated with JavaScript-->
             </ul>
         </div>
-        <div id="one-recipe" class="border">
+        <div id="one-recipe" class="border noInfo">
             <div id="orInstructions">
                 <h2>Instructions</h2>
+                <div id="orInstContent">
                 <!--instructions for one recipe go here-->
-                <ul></ul>
+                </div>
             </div>
             <div id="orIngredients">
                 <h2>Ingredients</h2>
+                <div id="orIngContent">
                 <!-- ingredients for one recipe go here-->
-                <ul></ul>
+                </div>
             </div>
         </div>
     </div>
@@ -58,8 +59,8 @@
                 <select name="measurements" id="unit-1">
                     <option value="g">g</option>
                     <option value="mL">mL</option>
-                    <option value=tsp">tsp</option>
-                    <option value=tbsp">tbsp</option>
+                    <option value="tsp">tsp</option>
+                    <option value="tbsp">tbsp</option>
                 </select>
                 <br>
                 <label for="ingredient-2">Ingredient 2: </label>
@@ -69,8 +70,8 @@
                 <select name="measurements" id="unit-2">
                     <option value="g">g</option>
                     <option value="mL">mL</option>
-                    <option value=tsp">tsp</option>
-                    <option value=tbsp">tbsp</option>
+                    <option value="tsp">tsp</option>
+                    <option value="tbsp">tbsp</option>
                 </select>
                 <br>
                 <label for="ingredient-3">Ingredient 3: </label>
@@ -80,8 +81,8 @@
                 <select name="measurements" id="unit-3">
                     <option value="g">g</option>
                     <option value="mL">mL</option>
-                    <option value=tsp">tsp</option>
-                    <option value=tbsp">tbsp</option>
+                    <option value="tsp">tsp</option>
+                    <option value="tbsp">tbsp</option>
                 </select>
                 <br>
                 <label for="ingredient-4">Ingredient 4: </label>
@@ -91,8 +92,8 @@
                 <select name="measurements" id="unit-4">
                     <option value="g">g</option>
                     <option value="mL">mL</option>
-                    <option value=tsp">tsp</option>
-                    <option value=tbsp">tbsp</option>
+                    <option value="tsp">tsp</option>
+                    <option value="tbsp">tbsp</option>
                 </select>
                 <br>
                 <label for="ingredient-5">Ingredient 5: </label>
@@ -102,8 +103,8 @@
                 <select name="measurements" id="unit-5">
                     <option value="g">g</option>
                     <option value="mL">mL</option>
-                    <option value=tsp">tsp</option>
-                    <option value=tbsp">tbsp</option>
+                    <option value="tsp">tsp</option>
+                    <option value="tbsp">tbsp</option>
                 </select>
             </div>
             <button id="more-ingredients" class="btn">More Ingredients</button>

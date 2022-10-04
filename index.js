@@ -15,23 +15,53 @@ function renderSavedRecipes(recipes) {
 const renderOneRecipeCard = recipe => {
     const recipeDiv = document.createElement('div')
     const recipeName = document.createElement('h3')
-    const recipeInstructions = document.createElement('p')
     const recipeImage = document.createElement('img')
-    const recipeIngredientsList = document.createElement('ul')
-    const recipeInstructionsTitle = document.createElement('h4')
-    const recipeIngredientsTitle = document.createElement('h4')
-
 
     recipeDiv.className = 'one-saved-recipe'
     recipeName.textContent = recipe.name 
-    recipeInstructions.textContent = recipe.instructions
-    recipeInstructionsTitle.textContent = 'Instructions:'
-    recipeIngredientsTitle.textContent = 'Ingredients:'
     recipeImage.src = recipe.image 
+
+// put the name, image, list of ingredients, and instructions in the card div
+    recipeDiv.append(recipeName, recipeImage)
+    // (recipeIngredientsTitle, recipeIngredientsList, recipeInstructionsTitle, recipeInstructions)
+
+// get the section and add the div to it
+    const allRecipesDiv = document.getElementById('all-saved-recipes')
+    allRecipesDiv.append(recipeDiv)
+
+    // event listener to show information
+    recipeDiv.addEventListener('click', e => showDetails(recipe))
     
-// iterating through the ingredients to store them all in recipeIngredientsList
+    // this was attempt #1 to highlight a clicked card
+    // recipeDiv.addEventListener('click', e => {
+    //     recipeDiv.classList.add('currentRecipe')
+    // })
+}
+
+
+function showDetails(recipe) {
+    const oneRecipe = document.getElementById('one-recipe')
+    const shoppingList = document.getElementById('shopping-list')
+    const detailsInstructions = document.getElementById('orInstContent')
+    const detailsIngredients = document.getElementById('orIngContent')
+
+    // use these classes to change container height
+    oneRecipe.classList.remove('noInfo')
+    shoppingList.classList.remove('noInfo')
+    oneRecipe.classList.add('hasInfo')
+    shoppingList.classList.add('hasInfo')
+    // replaces content already in the section with emptiness, so that new text can be put it
+    detailsInstructions.innerHTML = ''
+    detailsIngredients.innerHTML = ''
+
+    // creating elements
+    const recipeIngredientsList = document.createElement('ul')
+    const recipeInstructions = document.createElement('p')
+
+    recipeInstructions.textContent = recipe.instructions
+    // iterating through the ingredients to store them all in recipeIngredientsList
     const rI = recipe.ingredients
-    // this needs to be a for loop because it's an array, not an object
+    // // this needs to be a for loop because it's an array, not an object
     for (let i = 0; i < rI.length; i++) {
         const iLFull = document.createElement('li')
         const igName = rI[i].name
@@ -43,15 +73,12 @@ const renderOneRecipeCard = recipe => {
         
         recipeIngredientsList.append(iLFull)
     }
-
-// put the name, image, list of ingredients, and instructions in the card div
-    recipeDiv.append(recipeName, recipeImage, recipeIngredientsTitle, recipeIngredientsList, recipeInstructionsTitle, recipeInstructions)
-
-// get the section and add the div to it
-    const allRecipesDiv = document.getElementById('all-saved-recipes')
-    allRecipesDiv.append(recipeDiv)
+    detailsInstructions.append(recipeInstructions)
+    detailsIngredients.append(recipeIngredientsList)
 }
 
+
+// CSS related to the New Recipe Form
 const form = document.getElementById('new-recipe-form');
 form.addEventListener('submit', addNewRecipe);
 
