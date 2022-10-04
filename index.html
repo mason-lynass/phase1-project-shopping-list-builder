@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta lang="en-us">
     <title>Grocery List Helper</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <header>Grocery List Helper</header>
@@ -42,6 +42,10 @@
         <form id="new-recipe-form">
             <div id="nrInstructions" class="border">
                 <h2>Add New Recipe</h2>
+                <label for="recipe-name">Name:</label>
+                <input class="nrIngredient" name="recipe-name">
+                <label for="recipe-image">Image URL:</label>
+                <input class="nrIngredient" name="recipe-image">
                 <label for="new-comment">Instructions: </label>
                 <br>
                 <textarea name="instructions"></textarea>
@@ -51,7 +55,7 @@
                 <input class="nrIngredient" name="ingredient-1">
                 <label for="qty-1">Qty: </label>
                 <input class="nrIngredient" name="qty-1">
-                <select name="measurements" id="dropdown-1">
+                <select name="measurements" id="unit-1">
                     <option value="g">g</option>
                     <option value="mL">mL</option>
                     <option value=tsp">tsp</option>
@@ -62,7 +66,7 @@
                 <input class="nrIngredient" name="ingredient-2">
                 <label for="qty-2">Qty: </label>
                 <input class="nrIngredient" name="qty-2">
-                <select name="measurements" id="dropdown-2">
+                <select name="measurements" id="unit-2">
                     <option value="g">g</option>
                     <option value="mL">mL</option>
                     <option value=tsp">tsp</option>
@@ -73,7 +77,7 @@
                 <input class="nrIngredient" name="ingredient-3">
                 <label for="qty-3">Qty: </label>
                 <input class="nrIngredient" name="qty-3">
-                <select name="measurements" id="dropdown-3">
+                <select name="measurements" id="unit-3">
                     <option value="g">g</option>
                     <option value="mL">mL</option>
                     <option value=tsp">tsp</option>
@@ -84,7 +88,7 @@
                 <input class="nrIngredient" name="ingredient-4">
                 <label for="qty-4">Qty: </label>
                 <input class="nrIngredient" name="qty-4">
-                <select name="measurements" id="dropdown-4">
+                <select name="measurements" id="unit-4">
                     <option value="g">g</option>
                     <option value="mL">mL</option>
                     <option value=tsp">tsp</option>
@@ -95,15 +99,15 @@
                 <input class="nrIngredient" name="ingredient-5">
                 <label for="qty-5">Qty: </label>
                 <input class="nrIngredient" name="qty-5">
-                <select name="measurements" id="dropdown-5">
+                <select name="measurements" id="unit-5">
                     <option value="g">g</option>
                     <option value="mL">mL</option>
                     <option value=tsp">tsp</option>
                     <option value=tbsp">tbsp</option>
                 </select>
             </div>
-            <button class="more-ingredients">More Ingredients</button>
-            <input class="sub-btn" type="submit">
+            <button id="more-ingredients" class="btn">More Ingredients</button>
+            <input id="sub-btn" class="btn" type="submit">
         </form>
     </div>
     <script defer src="./index.js"></script>

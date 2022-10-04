@@ -1,31 +1,75 @@
- {
-    "Recipes": [
+{
+  "Recipes": [
+    {
+      "id": 1,
+      "name": "Coconut Pepita Maple Granola",
+      "instructions": "Preheat the oven to 250°F (120°C) and line a baking tray. In a large bowl, mix together the oats, almonds, seeds, and coconut. Pour the maple syrup, coconut oil, and salt over the oat mixture and toss it to coat. Transfer to the baking tray and bake on the centre rack of the oven for 60 - 70 minutes*, or until lightly golden. Stir every 15 - 20 minutes. When removed from the oven, let cool completely. It will continue to harden as it cools. If adding any dried fruits, stir it in now, then transfer the granola to an airtight container or large glass storage jar. Enjoy!",
+      "image": "https://peasandcrayons.com/wp-content/uploads/2017/03/healthy-homemade-granola-recipe-naturally-sweet-peasandcrayons-1202.jpg",
+      "ingredients": [
         {
-            "id": 1,
-            "name": "Coconut Pepita Maple Granola",
-            "directions": "Preheat the oven to 250°F (120°C) and line a baking tray. In a large bowl, mix together the oats, almonds, seeds, and coconut. Pour the maple syrup, coconut oil, and salt over the oat mixture and toss it to coat. Transfer to the baking tray and bake on the centre rack of the oven for 60 - 70 minutes*, or until lightly golden. Stir every 15 - 20 minutes. When removed from the oven, let cool completely. It will continue to harden as it cools. If adding any dried fruits, stir it in now, then transfer the granola to an airtight container or large glass storage jar. Enjoy!",
-            "image": "https://peasandcrayons.com/wp-content/uploads/2017/03/healthy-homemade-granola-recipe-naturally-sweet-peasandcrayons-1202.jpg",
-            "ingredients": [
-                {"name": "Rolled Oats", "quantity": "283", "unit": "g"},
-                {"name": "Pumpkin Seeds", "quantity": "108", "unit": "g"},
-                {"name": "Sunflower Seeds", "quantity": "31", "unit": "g"},
-                {"name": "Unsweetened Shredded Coconut", "quantity": "56", "unit": "g"},
-                {"name": "Maple Syrup", "quantity": "240", "unit": "mL"},
-                {"name": "Coconut Oil", "quantity": "60", "unit": "mL"},
-                {"name": "Salt", "quantity": "1/4", "unit": "tsp"}
-            ]
+          "name": "Rolled Oats",
+          "quantity": "283",
+          "unit": "g"
         },
         {
-            "id": 2,
-            "name": "Matcha Latte",
-            "directions": "Heat up some water. Add matcha powder to the cup. Pour in hot water. Wisk or stir until smooth. Add maple syrup and stir until mixed. Heat up your milk of choice on the stove or in the microwave. Wisk the hot milk to become frothy. Pour the milk into the cup. Optional add a dash of ground nutmeg to the top.",
-            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXfxOcct_0gXypDimXmSNwRFvuC_Ms0Q94Mw&usqp=CAU",
-            "ingredients": [
-                {"name": "Matcha Powder", "quantity": "1.5", "unit": "tsp"},
-                {"name": "Milk", "quantity": "250", "unit": "mL"},
-                {"name": "Maple Syrup", "quantity": "1", "unit": "tbsp"},
-                {"name": "Nutmeg", "quantity": "1/4", "unit": "tsp"}
-            ]
+          "name": "Pumpkin Seeds",
+          "quantity": "108",
+          "unit": "g"
+        },
+        {
+          "name": "Sunflower Seeds",
+          "quantity": "31",
+          "unit": "g"
+        },
+        {
+          "name": "Unsweetened Shredded Coconut",
+          "quantity": "56",
+          "unit": "g"
+        },
+        {
+          "name": "Maple Syrup",
+          "quantity": "240",
+          "unit": "mL"
+        },
+        {
+          "name": "Coconut Oil",
+          "quantity": "60",
+          "unit": "mL"
+        },
+        {
+          "name": "Salt",
+          "quantity": "1/4",
+          "unit": "tsp"
         }
-    ]
- }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Matcha Latte",
+      "instructions": "Heat up some water. Add matcha powder to the cup. Pour in hot water. Wisk or stir until smooth. Add maple syrup and stir until mixed. Heat up your milk of choice on the stove or in the microwave. Wisk the hot milk to become frothy. Pour the milk into the cup. Optional add a dash of ground nutmeg to the top.",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXfxOcct_0gXypDimXmSNwRFvuC_Ms0Q94Mw&usqp=CAU",
+      "ingredients": [
+        {
+          "name": "Matcha Powder",
+          "quantity": "1.5",
+          "unit": "tsp"
+        },
+        {
+          "name": "Milk",
+          "quantity": "250",
+          "unit": "mL"
+        },
+        {
+          "name": "Maple Syrup",
+          "quantity": "1",
+          "unit": "tbsp"
+        },
+        {
+          "name": "Nutmeg",
+          "quantity": "1/4",
+          "unit": "tsp"
+        }
+      ]
+    }
+  ]
+}
