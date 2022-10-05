@@ -122,6 +122,7 @@ h2 {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
+    width: 100%;
 }
 
 .nrAllIngredients {
@@ -130,25 +131,53 @@ h2 {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    width: 40%;
+    width: 60%;
 }
 
-.nrIngredient {
-    width: 70%;
+.nrInput {
+    width: 50%;
+    height: 10px;
     margin: 10px auto;
+    padding: 10 px;
+    text-align: center;
 } 
 
 #nrInstructions {
-    width: 60%;
+    width: 55%;
+    text-align: center;
 }
 
 #nrInstructions input {
     width: 70%;
-    height: 200px;
-    margin: 20px 100px;
+    height: 20px;
 } 
 
 .btn {
     height: 10%;
-    margin: 2px;
+    text-align: bottom;
+}
+
+.nrInstr {
+    width: 70%;
+    height: 250px;
+}
+
+#nrAllIngredients {
+    /* margin: 20px; */
+    text-align: center;
+    width: 70%;
+}
+
+.label {
+    margin: 10px;
+    height: 400px;
+}
+
+[for="new-comment"] {
+    top: -230px;
+    position: relative;
+}
+
+[for="recipe-name"] {
+    margin: 0px 48px 0px 10px;
 }

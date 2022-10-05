@@ -38,8 +38,8 @@
         },
         {
           "name": "Salt",
-          "quantity": "1/4",
-          "unit": "tsp"
+          "quantity": "6",
+          "unit": "g"
         }
       ]
     },
@@ -51,8 +51,8 @@
       "ingredients": [
         {
           "name": "Matcha Powder",
-          "quantity": "1.5",
-          "unit": "tsp"
+          "quantity": "4",
+          "unit": "g"
         },
         {
           "name": "Milk",
@@ -61,13 +61,13 @@
         },
         {
           "name": "Maple Syrup",
-          "quantity": "1",
-          "unit": "tbsp"
+          "quantity": "15",
+          "unit": "mL"
         },
         {
           "name": "Nutmeg",
-          "quantity": "1/4",
-          "unit": "tsp"
+          "quantity": "2",
+          "unit": "g"
         }
       ]
     }
