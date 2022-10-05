@@ -126,7 +126,7 @@ function addNewRecipe(e) {
     const newRecipe = {
         name: e.target['recipe-name'].value,
         instructions: e.target['instructions'].value,
-        image: e.target['recipe-image'].value,
+        image: e.target['recipe-image'].value ? e.target['recipe-image'].value : 'https://image.shutterstock.com/image-photo/healthy-food-clean-eating-selection-260nw-722718082.jpghttps://image.shutterstock.com/image-photo/healthy-food-clean-eating-selection-260nw-722718082.jpg',
         ingredients: [
             {name: e.target['ingredient-1'].value, quantity: e.target['qty-1'].value, unit: e.target['unit-1'].value},
             {name: e.target['ingredient-2'].value, quantity: e.target['qty-2'].value, unit: e.target['unit-2'].value},
@@ -140,6 +140,13 @@ function addNewRecipe(e) {
             {name: e.target['ingredient-10'].value, quantity: e.target['qty-10'].value, unit: e.target['unit-10'].value}
             ]
     }
+
+    for (i = 0; i < newRecipe['ingredients'].length; i++) {
+        if( newRecipe['ingredients'][i]['name'] === "") {
+            newRecipe['ingredients'].splice(i);
+        }
+    }
+
     postNewRecipe(newRecipe);
 
 }
