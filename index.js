@@ -132,8 +132,13 @@ function addNewRecipe(e) {
             {name: e.target['ingredient-2'].value, quantity: e.target['qty-2'].value, unit: e.target['unit-2'].value},
             {name: e.target['ingredient-3'].value, quantity: e.target['qty-3'].value, unit: e.target['unit-3'].value},
             {name: e.target['ingredient-4'].value, quantity: e.target['qty-4'].value, unit: e.target['unit-4'].value},
-            {name: e.target['ingredient-5'].value, quantity: e.target['qty-5'].value, unit: e.target['unit-5'].value}
-        ]
+            {name: e.target['ingredient-5'].value, quantity: e.target['qty-5'].value, unit: e.target['unit-5'].value},
+            {name: e.target['ingredient-6'].value, quantity: e.target['qty-6'].value, unit: e.target['unit-6'].value},
+            {name: e.target['ingredient-7'].value, quantity: e.target['qty-7'].value, unit: e.target['unit-7'].value},
+            {name: e.target['ingredient-8'].value, quantity: e.target['qty-8'].value, unit: e.target['unit-8'].value},
+            {name: e.target['ingredient-9'].value, quantity: e.target['qty-9'].value, unit: e.target['unit-9'].value},
+            {name: e.target['ingredient-10'].value, quantity: e.target['qty-10'].value, unit: e.target['unit-10'].value}
+            ]
     }
     postNewRecipe(newRecipe);
 
