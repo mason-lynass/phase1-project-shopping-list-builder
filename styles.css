@@ -1,7 +1,9 @@
 header {
     text-align: center;
-    font-size: 30px;
-    margin: 10px 0;
+    font-size: 40px;
+    padding: 20px 0;
+    color: white;
+    background-color: rgb(76, 177, 205);
 }
 
 h2 {
@@ -12,41 +14,65 @@ h2 {
     border: 1px solid black;
 }
 
+.border-left {
+    border-left: 1px solid black;
+}
+
 #top-section {
     display: flex;
     flex-flow: row nowrap;
 }
 
-#shopping-list {
-    width: 35%;
+#shopping-list-container {
+    width: 30%;
+}
+
+#shopping-list li {
+    font-size: 16px;
+    margin: 5px 10%;
+}
+
+#or-container {
+    width: 70%;
 }
 
 #one-recipe {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-evenly;
-    width: 65%;
+    align-items: center;
 }
 
 #one-recipe p, #one-recipe li {
-    font-size: 14px;
+    font-size: 16px;
     text-align: left;
     margin: 5px 20px;
 }
-
-
 
 .noInfo {
     height: 80px;
 }
 
 .hasInfo {
-    height: 300px;
+    height: 320px;
 }
 
 #orInstructions, #orIngredients {
-    width: 50%;
     text-align: center;
+}
+
+#orIngredients {
+    width: 35%;
+}
+
+#orInstructions {
+    width: 65%;
+}
+
+.sendToList {
+    display: block;
+    margin: 20px auto;
+    height: 40px;
 }
 
 /* CSS for the Saved Recipes */
@@ -56,6 +82,7 @@ h2 {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: top;
+    margin-bottom: 30px;
 }
 
 .one-saved-recipe {
@@ -66,8 +93,8 @@ h2 {
     margin: 20px;
 }
 
-.one-saved-recipe p {
-    font-size: 12px;
+.one-saved-recipe h3 {
+    font-size: 18px;
 }
 
 .one-saved-recipe img {
@@ -75,17 +102,18 @@ h2 {
     height: 200px;
 }
 
-.one-saved-recipe:active {
+/* .one-saved-recipe:active {
     border: 10px solid black;
-}
+} */
 
-.iLFull {
+.ingFull {
     font-size: 12px;
     text-align: left;
 }
 
 .currentRecipe {
-    border: 10px solid red;
+    border: 10px solid rgb(76, 177, 205);
+    padding: 10px
 }
 
 /* CSS for the form */

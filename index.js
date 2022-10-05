@@ -30,20 +30,22 @@ const renderOneRecipeCard = recipe => {
     allRecipesDiv.append(recipeDiv)
 
     // event listener to show information
-    recipeDiv.addEventListener('click', e => showDetails(recipe))
+    recipeDiv.addEventListener('click', e => {
+        showDetails(recipe)
+        removeCR(getAllCards)
+        recipeDiv.classList.add('currentRecipe')
+    })
     
-    // this was attempt #1 to highlight a clicked card
-    // recipeDiv.addEventListener('click', e => {
-    //     recipeDiv.classList.add('currentRecipe')
-    // })
 }
 
 
 function showDetails(recipe) {
+    const orContainer = document.getElementById('or-container')
     const oneRecipe = document.getElementById('one-recipe')
     const shoppingList = document.getElementById('shopping-list')
     const detailsInstructions = document.getElementById('orInstContent')
     const detailsIngredients = document.getElementById('orIngContent')
+    const activeButton = document.getElementById('sendToList-button')
 
     // use these classes to change container height
     oneRecipe.classList.remove('noInfo')
@@ -53,28 +55,64 @@ function showDetails(recipe) {
     // replaces content already in the section with emptiness, so that new text can be put it
     detailsInstructions.innerHTML = ''
     detailsIngredients.innerHTML = ''
+    if(activeButton){activeButton.remove()}
 
     // creating elements
     const recipeIngredientsList = document.createElement('ul')
     const recipeInstructions = document.createElement('p')
+    const addIngButton = document.createElement('input')
 
     recipeInstructions.textContent = recipe.instructions
+
+    addIngButton.type = 'submit'
+    addIngButton.className = 'orButton sendToList'
+    addIngButton.name = 'sendToList-button'
+    addIngButton.id = 'sendToList-button'
+    addIngButton.value = 'Add Ingredients to Shopping List'
+
     // iterating through the ingredients to store them all in recipeIngredientsList
     const rI = recipe.ingredients
+    
     // // this needs to be a for loop because it's an array, not an object
     for (let i = 0; i < rI.length; i++) {
-        const iLFull = document.createElement('li')
+        const ingFull = document.createElement('li')
         const igName = rI[i].name
         const igQuantity = rI[i].quantity
         const igUnit = rI[i].unit
     
-        iLFull.className = 'iLFull'
-        iLFull.textContent = `${igQuantity} ${igUnit} ${igName}`
+        ingFull.className = 'ingFull'
+        ingFull.textContent = `${igName} ${igQuantity} ${igUnit}`
         
-        recipeIngredientsList.append(iLFull)
+        recipeIngredientsList.append(ingFull)
     }
     detailsInstructions.append(recipeInstructions)
     detailsIngredients.append(recipeIngredientsList)
+    orContainer.append(addIngButton)
+
+    // send ingredients from one-recipe to shopping-list
+    addIngButton.addEventListener('click', e => {
+        const shoppingListContainer = document.getElementById('shopping-list')
+        for (let i = 0; i < rI.length; i++) {
+            const ingFull = document.createElement('li')
+            const igName = rI[i].name
+            const igQuantity = rI[i].quantity
+            const igUnit = rI[i].unit
+        
+            ingFull.className = 'ingFullSL'
+            ingFull.textContent = `${igName} ${igQuantity} ${igUnit}`
+            
+            shoppingListContainer.append(ingFull)
+        }
+    })
+}  
+
+
+// this function gets 'currentRecipe' which assigns the border, and removes it from the old "currentRecipe" when a new recipe is clicked
+const getAllCards = document.getElementsByClassName('one-saved-recipe')
+function removeCR(getAllCards) {
+    for (let i = 0; i < getAllCards.length; i++) {
+        getAllCards[i].classList.remove('currentRecipe')
+    }
 }
 
 
