@@ -30,12 +30,12 @@ const renderOneRecipeCard = recipe => {
     allRecipesDiv.append(recipeDiv)
 
     // event listener to show information
-    recipeDiv.addEventListener('click', e => showDetails(recipe))
+    recipeDiv.addEventListener('click', e => {
+        showDetails(recipe)
+        removeCR(getAllCards)
+        recipeDiv.classList.add('currentRecipe')
+    })
     
-    // this was attempt #1 to highlight a clicked card
-    // recipeDiv.addEventListener('click', e => {
-    //     recipeDiv.classList.add('currentRecipe')
-    // })
 }
 
 
@@ -72,35 +72,48 @@ function showDetails(recipe) {
 
     // iterating through the ingredients to store them all in recipeIngredientsList
     const rI = recipe.ingredients
+    
     // // this needs to be a for loop because it's an array, not an object
     for (let i = 0; i < rI.length; i++) {
-        const iLFull = document.createElement('li')
+        const ingFull = document.createElement('li')
         const igName = rI[i].name
         const igQuantity = rI[i].quantity
         const igUnit = rI[i].unit
     
-        iLFull.className = 'iLFull'
-        iLFull.textContent = `${igQuantity} ${igUnit} ${igName}`
+        ingFull.className = 'ingFull'
+        ingFull.textContent = `${igName} ${igQuantity} ${igUnit}`
         
-        recipeIngredientsList.append(iLFull)
+        recipeIngredientsList.append(ingFull)
     }
     detailsInstructions.append(recipeInstructions)
     detailsIngredients.append(recipeIngredientsList)
     orContainer.append(addIngButton)
 
     // send ingredients from one-recipe to shopping-list
-
-    addIngButton.addEventListener('click', e => addIngredientsToShoppingList())
-
-    function addIngredientsToShoppingList() {
-        const shoppingList = document.getElementById('shopping-list')
-        // this doesn't quite work yet, it deletes ingredients from the one-recipe
-        shoppingList.append(recipeIngredientsList)
+    addIngButton.addEventListener('click', e => {
+        const shoppingListContainer = document.getElementById('shopping-list')
+        for (let i = 0; i < rI.length; i++) {
+            const ingFull = document.createElement('li')
+            const igName = rI[i].name
+            const igQuantity = rI[i].quantity
+            const igUnit = rI[i].unit
+        
+            ingFull.className = 'ingFullSL'
+            ingFull.textContent = `${igName} ${igQuantity} ${igUnit}`
+            
+            shoppingListContainer.append(ingFull)
+        }
+    })
 }  
+
+
+// this function gets 'currentRecipe' which assigns the border, and removes it from the old "currentRecipe" when a new recipe is clicked
+const getAllCards = document.getElementsByClassName('one-saved-recipe')
+function removeCR(getAllCards) {
+    for (let i = 0; i < getAllCards.length; i++) {
+        getAllCards[i].classList.remove('currentRecipe')
+    }
 }
-
-
-
 
 
 // CSS related to the New Recipe Form

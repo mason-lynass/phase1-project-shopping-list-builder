@@ -9,32 +9,32 @@
 <body>
     <header>Grocery List Helper</header>
     <div id="top-section" class="border">
-        <div id="shopping-list">
+        <div id="shopping-list-container">
             <h2>My Shopping List</h2>
-            <ul>
+            <ul id="shopping-list">
                 <!--this is where list elements go-->
                 <!--but we don't need to see any right now-->
                 <!--because they'll be generated with JavaScript-->
             </ul>
         </div>
-        <div id="or-container" class="border">
+        <div id="or-container" class="border-left">
             <div id="one-recipe" class="noInfo">
-                <div id="orInstructions">
-                    <h2>Instructions</h2>
-                    <div id="orInstContent">
-                    <!--instructions for one recipe go here-->
-                    </div>
-                </div>
                 <div id="orIngredients">
                     <h2>Ingredients</h2>
                     <div id="orIngContent">
                     <!-- ingredients for one recipe go here-->
                     </div>
                 </div>
+                <div id="orInstructions">
+                    <h2>Instructions</h2>
+                    <div id="orInstContent">
+                    <!--instructions for one recipe go here-->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div id="saved-recipes-container" class="border">
+    <div id="saved-recipes-container" class="">
         <h2>Saved Recipes</h2>
         <div id="all-saved-recipes">
         <!-- recipe cards go here -->    
