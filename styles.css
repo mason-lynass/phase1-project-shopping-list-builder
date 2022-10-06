@@ -50,6 +50,11 @@ li {
     margin: 5px auto;
 }
 
+#slIngRemove {
+    margin-right: 10%;
+    margin-left: 3%;
+}
+
 .shopping-list-scroll {
     overflow: scroll;
 }
@@ -79,7 +84,7 @@ li {
 }
 
 #one-recipe li {
-    margin: 5px 5px 5px -20px;
+    margin: 5px 5px;
 }
 
 .noInfo {
