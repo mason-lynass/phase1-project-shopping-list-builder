@@ -196,7 +196,7 @@ function addNewRecipe(e) {
     }
 
     postNewRecipe(newRecipe);
-
+    form.reset();
 }
 
 function postNewRecipe(newRecipe) {
