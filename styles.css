@@ -154,7 +154,7 @@ h2 {
 
 .btn {
     height: 10%;
-    text-align: bottom;
+    align-self: flex-end;
 }
 
 .nrInstr {
@@ -180,4 +180,18 @@ h2 {
 
 [for="recipe-name"] {
     margin: 0px 48px 0px 10px;
+}
+
+/* #form-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 60%;
+} */
+
+.recipe-card-image {
+    text-align: center;
+    margin-left: 20px;
 }

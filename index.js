@@ -16,13 +16,18 @@ const renderOneRecipeCard = recipe => {
     const recipeDiv = document.createElement('div')
     const recipeName = document.createElement('h3')
     const recipeImage = document.createElement('img')
+    const recipeDeleteBtn = document.createElement('button')
 
     recipeDiv.className = 'one-saved-recipe'
     recipeName.textContent = recipe.name 
-    recipeImage.src = recipe.image 
+    recipeImage.src = recipe.image
+    recipeImage.className = 'recipe-card-image'
+    recipeDeleteBtn.textContent = 'x'
+    recipeDeleteBtn.className = 'delete-recipe'
+
 
 // put the name, image, list of ingredients, and instructions in the card div
-    recipeDiv.append(recipeName, recipeImage)
+    recipeDiv.append(recipeName, recipeImage, recipeDeleteBtn)
     // (recipeIngredientsTitle, recipeIngredientsList, recipeInstructionsTitle, recipeInstructions)
 
 // get the section and add the div to it
@@ -36,6 +41,12 @@ const renderOneRecipeCard = recipe => {
         recipeDiv.classList.add('currentRecipe')
     })
     
+    recipeDiv.querySelector('.delete-recipe').addEventListener('click', deleteFunction)
+    
+    function deleteFunction(e) {
+        alert('Delete?') 
+        recipeDiv.remove();
+    }
 }
 
 
