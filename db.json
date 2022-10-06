@@ -70,6 +70,64 @@
           "unit": "g"
         }
       ]
+    },
+    {
+      "name": "Vegan Pesto",
+      "instructions": "1. Heat a small pan over medium-high heat, and toast the walnuts and pine nuts until fragrant for 3 - 5 minutes, stirring continuously. Transfer to a food processor.\n2. To the same food processor, add the basil, arugula, nutritional yeast, oil, water, garlic, lemon juice, pepper, and salt. Blend on high speed until smooth.\n3. Spread onto toasted bread or serve with crackers. Enjoy!",
+      "image": "https://cdn.pickuplimes.com/cache/1f/53/1f535654a81039e4a988d142f736520a.jpg",
+      "ingredients": [
+        {
+          "name": "Pine nuts",
+          "quantity": "68",
+          "unit": "g"
+        },
+        {
+          "name": "Fresh Basil",
+          "quantity": "24",
+          "unit": "g"
+        },
+        {
+          "name": "Arugula",
+          "quantity": "20",
+          "unit": "g"
+        },
+        {
+          "name": "Nutritional Yeast",
+          "quantity": "12",
+          "unit": "g"
+        },
+        {
+          "name": "Olive Oil",
+          "quantity": "60",
+          "unit": "mL"
+        },
+        {
+          "name": "Water",
+          "quantity": "60",
+          "unit": "mL"
+        },
+        {
+          "name": "Garlic",
+          "quantity": "14",
+          "unit": "g"
+        },
+        {
+          "name": "Lemon Juice",
+          "quantity": "45",
+          "unit": "mL"
+        },
+        {
+          "name": "Ground Pepper",
+          "quantity": ".5",
+          "unit": "g"
+        },
+        {
+          "name": "Salt",
+          "quantity": ".6",
+          "unit": "g"
+        }
+      ],
+      "id": 3
     }
   ]
 }
