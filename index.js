@@ -34,14 +34,16 @@ const renderOneRecipeCard = recipe => {
     recipeImage.src = recipe.image
     recipeImage.className = 'recipe-card-image'
     recipeDeleteBtn.textContent = 'x'
-    recipeDeleteBtn.className = 'delete-recipe'
+    recipeDeleteBtn.classList = 'delete-recipe'
+
+    addHoverEventToBtn(recipeDeleteBtn);
 
 
-// put the name, image, list of ingredients, and instructions in the card div
+    // put the name, image, list of ingredients, and instructions in the card div
     recipeDiv.append(recipeName, recipeImage, recipeDeleteBtn)
     // (recipeIngredientsTitle, recipeIngredientsList, recipeInstructionsTitle, recipeInstructions)
 
-// get the section and add the div to it
+    // get the section and add the div to it
     const allRecipesDiv = document.getElementById('all-saved-recipes')
     allRecipesDiv.append(recipeDiv)
 
@@ -95,6 +97,9 @@ function showDetails(recipe) {
     addIngButton.id = 'sendToList-button'
     addIngButton.value = 'Add Ingredients to Shopping List'
 
+    addHoverEventToBtn(addIngButton);
+
+
     // iterating through the ingredients to store them all in recipeIngredientsList
     const rI = recipe.ingredients
     
@@ -109,7 +114,6 @@ function showDetails(recipe) {
         addOneIngButton.type = 'submit'
         ingFull.className = 'ingFull'
         ingFull.textContent = `${igName} ${igQuantity} ${igUnit} `
-        // ingFull.append(addOneIngButton)
 
         recipeIngredientsList.append(ingFull)
     }
@@ -137,7 +141,10 @@ function showDetails(recipe) {
             removeIngButton.type = 'submit'
             removeIngButton.id = 'slIngRemove'
             removeIngButton.className = `${igName}`
+            // removeIngButton.className = 'btn'
             removeIngButton.value = 'x'
+
+            addHoverEventToBtn(removeIngButton);
 
             if(listElements.length > 0){
                 console.log('checking for doubles')
@@ -178,16 +185,27 @@ function showDetails(recipe) {
     })
 }  
 
+let allBtns = document.querySelectorAll('.btn');
+allBtns.forEach(btn => addHoverEventToBtn(btn));
 
 
+function addHoverEventToBtn(item) {
+    item.onmouseover = function(event) {
+        let target = event.target;
+        target.style.background = 'green';
+      };
+      
+      item.onmouseout = function(event) {
+        let target = event.target;
+        target.style.background = '';
+      };
+}
 
-
-
-
-// CSS related to the New Recipe Form
+// created form and added submit event
 const form = document.getElementById('new-recipe-form');
 form.addEventListener('submit', addNewRecipe);
 
+// function passed to submit event listener. Builds out the new object to post to the DB. 
 function addNewRecipe(e) {
     e.preventDefault();
     console.log(e.target['unit-1'].value)
@@ -209,17 +227,20 @@ function addNewRecipe(e) {
             ]
     }
 
+    // deletes any elements left blank in the new object
     for (i = 0; i < newRecipe['ingredients'].length; i++) {
         if( newRecipe['ingredients'][i]['name'] === "") {
             newRecipe['ingredients'].splice(i);
         }
     }
 
+    // calls function that actually post the new objet to the DB and page. 
     postNewRecipe(newRecipe);
     form.reset();
 
 }
 
+// that post the recipe to the DB and page
 function postNewRecipe(newRecipe) {
     fetch(url, {
         method: 'POST',
@@ -231,15 +252,4 @@ function postNewRecipe(newRecipe) {
     .then(res => res.json())
     .then(renderOneRecipeCard(newRecipe))
     .catch((error) => {console.error('Error:', error)})
-}
-
-function deleteRecipeFromDatabase(id) {
-    fetch(`http://localhost:3000/Recipes/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(res => res.json)
-    .then(console.log(recipeDiv));
 }

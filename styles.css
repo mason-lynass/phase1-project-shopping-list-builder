@@ -124,6 +124,10 @@ li {
     margin-bottom: 30px;
 }
 
+/* #saved-recipes-container {
+    width: auto;
+} */
+
 .one-saved-recipe {
     border: 1px solid black;
     width: 250px;
