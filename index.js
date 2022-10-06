@@ -55,8 +55,9 @@ const renderOneRecipeCard = recipe => {
     recipeDiv.querySelector('.delete-recipe').addEventListener('click', deleteFunction)
     
     function deleteFunction(e) {
-        alert('Delete?') 
+        alert('Click "OK" to delete, or refresh to cancel.') 
         recipeDiv.remove();
+        deleteRecipeFromDatabase(recipe.id);
     }
 }
 
@@ -117,7 +118,7 @@ function showDetails(recipe) {
     orContainer.prepend(recipeTitle)
     orContainer.append(addIngButton)
 
-    // functions related to actions that occur after you add ingredients to shopping list
+    // functions related to actions that stems from adding ingredients to the shopping list
     addIngButton.addEventListener('click', e => {
         const shoppingListContainer = document.getElementById('shopping-list')
         
@@ -161,20 +162,7 @@ function showDetails(recipe) {
                         console.log('added ingredient')
                         console.log('---end of ingredient---')
                 }
-                // for (let i = 0; i < allListItems.length; i++) {
-                //     // set = to instead of includes ??
-                //     console.log(`trying to add ${igName}`)
-                //         console.log(allListItems[i])
-                //     if (allListItems[i].textContent.includes(igName)) {
-                //         console.log('break')
-                //         break
-                //     }
-                //     else if (i > allListItems.length) {
-                //         ingFull.prepend(removeIngButton)
-                //         shoppingListContainer.append(ingFull)
-                //     }
-                //     else console.log('else')
-                // }
+            
             } else {
                 console.log('list empty, adding new ingredients')
                 ingFull.prepend(removeIngButton)
@@ -241,7 +229,7 @@ function addNewRecipe(e) {
     }
 
     postNewRecipe(newRecipe);
-
+    form.reset();
 }
 
 function postNewRecipe(newRecipe) {
@@ -255,4 +243,15 @@ function postNewRecipe(newRecipe) {
     .then(res => res.json())
     .then(renderOneRecipeCard(newRecipe))
     .catch((error) => {console.error('Error:', error)})
+}
+
+function deleteRecipeFromDatabase(id) {
+    fetch(`http://localhost:3000/Recipes/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => res.json)
+    .then(console.log(recipeDiv));
 }
