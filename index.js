@@ -44,8 +44,9 @@ const renderOneRecipeCard = recipe => {
     recipeDiv.querySelector('.delete-recipe').addEventListener('click', deleteFunction)
     
     function deleteFunction(e) {
-        alert('Delete?') 
+        alert('Click "OK" to delete, or refresh to cancel.')
         recipeDiv.remove();
+        deleteRecipeFromDatabase(recipe.id);
     }
 }
 
@@ -159,6 +160,7 @@ function addNewRecipe(e) {
     }
 
     postNewRecipe(newRecipe);
+    form.reset();
 
 }
 
@@ -173,4 +175,15 @@ function postNewRecipe(newRecipe) {
     .then(res => res.json())
     .then(renderOneRecipeCard(newRecipe))
     .catch((error) => {console.error('Error:', error)})
+}
+
+function deleteRecipeFromDatabase(id) {
+    fetch(`http://localhost:3000/Recipes/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => res.json)
+    .then(console.log(recipeDiv));
 }
