@@ -119,12 +119,12 @@
         },
         {
           "name": "Ground Pepper",
-          "quantity": ".5",
+          "quantity": "1",
           "unit": "g"
         },
         {
           "name": "Salt",
-          "quantity": ".6",
+          "quantity": "1",
           "unit": "g"
         }
       ]
@@ -157,17 +157,17 @@
         },
         {
           "name": "Salt",
-          "quantity": ".6",
+          "quantity": "1",
           "unit": "g"
         },
         {
           "name": "Italian Seasoning",
-          "quantity": "2.8",
+          "quantity": "3",
           "unit": "g"
         },
         {
           "name": "Ground Pepper",
-          "quantity": ".5",
+          "quantity": "1",
           "unit": "g"
         },
         {
