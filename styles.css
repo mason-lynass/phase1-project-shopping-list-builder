@@ -50,6 +50,10 @@ li {
     margin: 5px auto;
 }
 
+.shopping-list-scroll {
+    overflow: scroll;
+}
+
 .slIngRemove {
     margin-right: 30px;
 }
@@ -179,8 +183,9 @@ li {
 } 
 
 .btn {
-    height: 10%;
+    height: 5%;
     align-self: flex-end;
+    margin: 10px;
 }
 
 .nrInstr {
@@ -189,7 +194,6 @@ li {
 }
 
 #nrAllIngredients {
-    /* margin: 20px; */
     text-align: center;
     width: 70%;
 }
@@ -207,15 +211,6 @@ li {
 [for="recipe-name"] {
     margin: 0px 48px 0px 10px;
 }
-
-/* #form-container {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    width: 60%;
-} */
 
 .recipe-card-image {
     text-align: center;

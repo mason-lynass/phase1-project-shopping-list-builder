@@ -11,11 +11,13 @@
     <div id="top-section" class="border">
         <div id="shopping-list-container">
             <h2>My Shopping List</h2>
-            <ul id="shopping-list">
-                <!--this is where list elements go-->
-                <!--but we don't need to see any right now-->
-                <!--because they'll be generated with JavaScript-->
-            </ul>
+            <div class="shopping-list-scroll">
+                <ul id="shopping-list">
+                    <!--this is where list elements go-->
+                    <!--but we don't need to see any right now-->
+                    <!--because they'll be generated with JavaScript-->
+                </ul>
+            </div>
             <div id="sendList">
                 <input id="sendListEmail" type="text" placeholder="email address"> 
                 <input id="sendListButton" type="submit" value="send me the list!">
@@ -48,7 +50,6 @@
     </div>
     <div id="new-recipe" class="border">
         <form id="new-recipe-form">
-            <!-- <div id="form-container"> -->
                 <div id="nrInstructions" class="border">
                     <h2>Add New Recipe</h2>
                     <label class="label" for="recipe-name">Name:</label>
@@ -151,11 +152,10 @@
                         <option value="g">g</option>
                         <option value="mL">mL</option>
                     </select>
-                </div>
-            <!-- <div> -->
-                <input id="sub-btn" class="btn" type="submit">
-        </form>
-    </div>
+                    <input id="sub-btn" class="btn" type="submit">
+                </div>                
+            </form>
+         </div>
     <script defer src="./index.js"></script>
 </body>
 </html>
