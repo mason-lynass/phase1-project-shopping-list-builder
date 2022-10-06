@@ -55,9 +55,8 @@ const renderOneRecipeCard = recipe => {
     recipeDiv.querySelector('.delete-recipe').addEventListener('click', deleteFunction)
     
     function deleteFunction(e) {
-        alert('Click "OK" to delete, or refresh to cancel.')
+        alert('Delete?') 
         recipeDiv.remove();
-        deleteRecipeFromDatabase(recipe.id);
     }
 }
 
@@ -118,12 +117,10 @@ function showDetails(recipe) {
     orContainer.prepend(recipeTitle)
     orContainer.append(addIngButton)
 
-    // functions related to actions that stem from adding ingredients to the shopping list
+    // functions related to actions that occur after you add ingredients to shopping list
     addIngButton.addEventListener('click', e => {
         const shoppingListContainer = document.getElementById('shopping-list')
-        const xButton = document.querySelectorAll('#slIngRemove');
-        const listElements = document.querySelectorAll('.ingFullSL')
-
+        
         // send ingredients from one-recipe to shopping-list
         for (let i = 0; i < rI.length; i++) {
             const ingFull = document.createElement('li')
@@ -131,7 +128,8 @@ function showDetails(recipe) {
             const igQuantity = rI[i].quantity
             const igUnit = rI[i].unit
             const removeIngButton = document.createElement('input')
-        
+            const allListItems = document.querySelectorAll('.ingFullSL')
+
             ingFull.className = 'ingFullSL'
             ingFull.textContent = `${igName} ${igQuantity} ${igUnit}`
             removeIngButton.type = 'submit'
@@ -139,36 +137,44 @@ function showDetails(recipe) {
             removeIngButton.className = `${igName}`
             removeIngButton.value = 'x'
 
-            if(listElements.length > 0){
+            // if the shopping list is empty
+            if(allListItems.length > 0){
                 console.log('checking for doubles')
-                listElements.forEach(element => {
-                    if (element.textContent.includes(igName)) {
-                        console.log('trying to add')
-
-                    } else {
-                        console.log('else')
+                for (let i = 0; i < allListItems.length; i++) {
+                    // set = to instead of includes ??
+                    console.log(`trying to add ${igName}`)
+                        console.log(allListItems[i])
+                    if (allListItems[i].textContent.includes(igName)) {
+                        
+                        console.log('break')
+                        break
+                    }
+                    else if (i > allListItems.length) {
                         ingFull.prepend(removeIngButton)
                         shoppingListContainer.append(ingFull)
                     }
-                })
+                    else console.log('else')
+                    
+                }
             } else {
-                console.log('nothing in here, adding new ingredients')
+                console.log('list empty, adding new ingredients')
                 ingFull.prepend(removeIngButton)
                 shoppingListContainer.append(ingFull)
+                console.log(allListItems.length)
             }
+            
         }
-        
-
-
         // makes the x button remove the correct list element
+        const xButton = document.querySelectorAll('#slIngRemove')
+        const listElements = document.querySelectorAll('.ingFullSL')
         xButton.forEach(button => {
             button.addEventListener('click', e => { 
-                console.log(button)
+                // console.log(button)
                 const buttonCL = button.classList
-                console.log(buttonCL)
-                console.log(listElements)
+                // console.log(buttonCL)
+                // console.log(listElements)
                 listElements.forEach(element => {
-                    console.log(element.textContent)
+                    // console.log(element.textContent)
                     if (element.textContent.includes(buttonCL)) {
                         element.remove()
                     }
@@ -216,7 +222,6 @@ function addNewRecipe(e) {
     }
 
     postNewRecipe(newRecipe);
-    form.reset();
 
 }
 
@@ -231,15 +236,4 @@ function postNewRecipe(newRecipe) {
     .then(res => res.json())
     .then(renderOneRecipeCard(newRecipe))
     .catch((error) => {console.error('Error:', error)})
-}
-
-function deleteRecipeFromDatabase(id) {
-    fetch(`http://localhost:3000/Recipes/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(res => res.json)
-    .then(console.log(recipeDiv));
 }
