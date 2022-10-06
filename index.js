@@ -27,13 +27,18 @@ const renderOneRecipeCard = recipe => {
     const recipeDiv = document.createElement('div')
     const recipeName = document.createElement('h3')
     const recipeImage = document.createElement('img')
+    const recipeDeleteBtn = document.createElement('button')
 
     recipeDiv.className = 'one-saved-recipe'
     recipeName.textContent = recipe.name 
-    recipeImage.src = recipe.image 
+    recipeImage.src = recipe.image
+    recipeImage.className = 'recipe-card-image'
+    recipeDeleteBtn.textContent = 'x'
+    recipeDeleteBtn.className = 'delete-recipe'
+
 
 // put the name, image, list of ingredients, and instructions in the card div
-    recipeDiv.append(recipeName, recipeImage)
+    recipeDiv.append(recipeName, recipeImage, recipeDeleteBtn)
     // (recipeIngredientsTitle, recipeIngredientsList, recipeInstructionsTitle, recipeInstructions)
 
 // get the section and add the div to it
@@ -45,7 +50,14 @@ const renderOneRecipeCard = recipe => {
         showDetails(recipe)
         removeCR(getAllCards)
         recipeDiv.classList.add('currentRecipe')
-    }) 
+    })
+    
+    recipeDiv.querySelector('.delete-recipe').addEventListener('click', deleteFunction)
+    
+    function deleteFunction(e) {
+        alert('Delete?') 
+        recipeDiv.remove();
+    }
 }
 
 function showDetails(recipe) {
@@ -162,7 +174,7 @@ function addNewRecipe(e) {
     const newRecipe = {
         name: e.target['recipe-name'].value,
         instructions: e.target['instructions'].value,
-        image: e.target['recipe-image'].value,
+        image: e.target['recipe-image'].value ? e.target['recipe-image'].value : 'https://image.shutterstock.com/image-photo/healthy-food-clean-eating-selection-260nw-722718082.jpghttps://image.shutterstock.com/image-photo/healthy-food-clean-eating-selection-260nw-722718082.jpg',
         ingredients: [
             {name: e.target['ingredient-1'].value, quantity: e.target['qty-1'].value, unit: e.target['unit-1'].value},
             {name: e.target['ingredient-2'].value, quantity: e.target['qty-2'].value, unit: e.target['unit-2'].value},
@@ -176,6 +188,13 @@ function addNewRecipe(e) {
             {name: e.target['ingredient-10'].value, quantity: e.target['qty-10'].value, unit: e.target['unit-10'].value}
             ]
     }
+
+    for (i = 0; i < newRecipe['ingredients'].length; i++) {
+        if( newRecipe['ingredients'][i]['name'] === "") {
+            newRecipe['ingredients'].splice(i);
+        }
+    }
+
     postNewRecipe(newRecipe);
 
 }
