@@ -55,7 +55,7 @@ const renderOneRecipeCard = recipe => {
     recipeDiv.querySelector('.delete-recipe').addEventListener('click', deleteFunction)
     
     function deleteFunction(e) {
-        alert('Click "OK" to delete, or refresh to cancel.')
+        alert('Click "OK" to delete, or refresh to cancel.') 
         recipeDiv.remove();
         deleteRecipeFromDatabase(recipe.id);
     }
@@ -118,12 +118,10 @@ function showDetails(recipe) {
     orContainer.prepend(recipeTitle)
     orContainer.append(addIngButton)
 
-    // functions related to actions that stem from adding ingredients to the shopping list
+    // functions related to actions that stems from adding ingredients to the shopping list
     addIngButton.addEventListener('click', e => {
         const shoppingListContainer = document.getElementById('shopping-list')
-        const xButton = document.querySelectorAll('#slIngRemove');
-        const listElements = document.querySelectorAll('.ingFullSL')
-
+        
         // send ingredients from one-recipe to shopping-list
         for (let i = 0; i < rI.length; i++) {
             const ingFull = document.createElement('li')
@@ -131,7 +129,9 @@ function showDetails(recipe) {
             const igQuantity = rI[i].quantity
             const igUnit = rI[i].unit
             const removeIngButton = document.createElement('input')
-        
+            const allListItems = document.querySelectorAll('.ingFullSL')
+            let matchFound = 0
+
             ingFull.className = 'ingFullSL'
             ingFull.textContent = `${igName} ${igQuantity} ${igUnit}`
             removeIngButton.type = 'submit'
@@ -139,42 +139,55 @@ function showDetails(recipe) {
             removeIngButton.className = `${igName}`
             removeIngButton.value = 'x'
 
-            if(listElements.length > 0){
+            // if the shopping list is empty
+            if(allListItems.length > 0){
                 console.log('checking for doubles')
-                listElements.forEach(element => {
-                    if (element.textContent.includes(igName)) {
-                        console.log('trying to add')
-
+                console.log(allListItems)
+                console.log(allListItems.length)
+                allListItems.forEach(item => {
+                    if (item.textContent.includes(igName)) {
+                        console.log(`it's a match!`)
+                        matchFound = 1
                     } else {
-                        console.log('else')
-                        ingFull.prepend(removeIngButton)
-                        shoppingListContainer.append(ingFull)
+                        console.log('not a match')
                     }
                 })
+                console.log(matchFound)
+                if (matchFound === 1) {
+                    console.log('we have this one already')
+                    console.log('---end of ingredient---')
+                } else {
+                        ingFull.prepend(removeIngButton)
+                        shoppingListContainer.append(ingFull)
+                        console.log('added ingredient')
+                        console.log('---end of ingredient---')
+                }
+            
             } else {
-                console.log('nothing in here, adding new ingredients')
+                console.log('list empty, adding new ingredients')
                 ingFull.prepend(removeIngButton)
                 shoppingListContainer.append(ingFull)
-            }
+            } 
+            
         }
-        
-
-
         // makes the x button remove the correct list element
+        const xButton = document.querySelectorAll('#slIngRemove')
+        const listElements = document.querySelectorAll('.ingFullSL')
         xButton.forEach(button => {
             button.addEventListener('click', e => { 
-                console.log(button)
+                // console.log(button)
                 const buttonCL = button.classList
-                console.log(buttonCL)
-                console.log(listElements)
+                // console.log(buttonCL)
+                // console.log(listElements)
                 listElements.forEach(element => {
-                    console.log(element.textContent)
+                    // console.log(element.textContent)
                     if (element.textContent.includes(buttonCL)) {
                         element.remove()
                     }
                 })
             })
         })
+        console.log('END OF CLICK')
     })
 }  
 
@@ -217,7 +230,6 @@ function addNewRecipe(e) {
 
     postNewRecipe(newRecipe);
     form.reset();
-
 }
 
 function postNewRecipe(newRecipe) {
