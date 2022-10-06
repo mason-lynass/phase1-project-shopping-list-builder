@@ -72,7 +72,7 @@
       ]
     },
     {
-      "id": 3
+      "id": 3,
       "name": "Vegan Pesto",
       "instructions": "1. Heat a small pan over medium-high heat, and toast the walnuts and pine nuts until fragrant for 3 - 5 minutes, stirring continuously. Transfer to a food processor.\n2. To the same food processor, add the basil, arugula, nutritional yeast, oil, water, garlic, lemon juice, pepper, and salt. Blend on high speed until smooth.\n3. Spread onto toasted bread or serve with crackers. Enjoy!",
       "image": "https://cdn.pickuplimes.com/cache/1f/53/1f535654a81039e4a988d142f736520a.jpg",
@@ -130,7 +130,7 @@
       ]
     },
     {
-      "id": 4
+      "id": 4,
       "name": "Butter Lettuce Salad",
       "instructions": "1. Wash lettuce and tear into bite size pieces. \n2. Add toppings. \n3. Toss and enjoy!",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqzJDOKC1dCnmzcD-To7O5XRym809nVigX9w&usqp=CAU",
@@ -175,7 +175,7 @@
           "quantity": "30",
           "unit": "g"
         }
-      ],
+      ]
     }
   ]
 }

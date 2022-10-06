@@ -118,9 +118,13 @@ function showDetails(recipe) {
     orContainer.prepend(recipeTitle)
     orContainer.append(addIngButton)
 
-    // send ingredients from one-recipe to shopping-list
+    // functions related to actions that stem from adding ingredients to the shopping list
     addIngButton.addEventListener('click', e => {
         const shoppingListContainer = document.getElementById('shopping-list')
+        const xButton = document.querySelectorAll('#slIngRemove');
+        const listElements = document.querySelectorAll('.ingFullSL')
+
+        // send ingredients from one-recipe to shopping-list
         for (let i = 0; i < rI.length; i++) {
             const ingFull = document.createElement('li')
             const igName = rI[i].name
@@ -135,13 +139,28 @@ function showDetails(recipe) {
             removeIngButton.className = `${igName}`
             removeIngButton.value = 'x'
 
-            ingFull.prepend(removeIngButton)
+            if(listElements.length > 0){
+                console.log('checking for doubles')
+                listElements.forEach(element => {
+                    if (element.textContent.includes(igName)) {
+                        console.log('trying to add')
 
-            shoppingListContainer.append(ingFull)
+                    } else {
+                        console.log('else')
+                        ingFull.prepend(removeIngButton)
+                        shoppingListContainer.append(ingFull)
+                    }
+                })
+            } else {
+                console.log('nothing in here, adding new ingredients')
+                ingFull.prepend(removeIngButton)
+                shoppingListContainer.append(ingFull)
+            }
         }
+        
+
+
         // makes the x button remove the correct list element
-        const xButton = document.querySelectorAll('#slIngRemove');
-        const listElements = document.querySelectorAll('.ingFullSL')
         xButton.forEach(button => {
             button.addEventListener('click', e => { 
                 console.log(button)
