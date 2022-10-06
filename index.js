@@ -11,6 +11,17 @@ function renderSavedRecipes(recipes) {
     recipes.forEach(renderOneRecipeCard)
 }
 
+// this function gets 'currentRecipe' which assigns the border, and removes it from the old "currentRecipe" when a new recipe is clicked
+const getAllCards = document.getElementsByClassName('one-saved-recipe')
+function removeCR(getAllCards) {
+    for (let i = 0; i < getAllCards.length; i++) {
+        getAllCards[i].classList.remove('currentRecipe')
+    }
+}
+
+
+
+
 // making one recipe card
 const renderOneRecipeCard = recipe => {
     const recipeDiv = document.createElement('div')
@@ -49,8 +60,8 @@ const renderOneRecipeCard = recipe => {
     }
 }
 
-
 function showDetails(recipe) {
+    const recipeTitle = document.querySelector('h1')
     const orContainer = document.getElementById('or-container')
     const oneRecipe = document.getElementById('one-recipe')
     const shoppingList = document.getElementById('shopping-list')
@@ -73,6 +84,8 @@ function showDetails(recipe) {
     const recipeInstructions = document.createElement('p')
     const addIngButton = document.createElement('input')
 
+    recipeTitle.id = 'recipe-title'
+    recipeTitle.textContent = recipe.name
     recipeInstructions.textContent = recipe.instructions
 
     addIngButton.type = 'submit'
@@ -87,17 +100,21 @@ function showDetails(recipe) {
     // // this needs to be a for loop because it's an array, not an object
     for (let i = 0; i < rI.length; i++) {
         const ingFull = document.createElement('li')
+        const addOneIngButton = document.createElement('input')
         const igName = rI[i].name
         const igQuantity = rI[i].quantity
         const igUnit = rI[i].unit
     
+        addOneIngButton.type = 'submit'
         ingFull.className = 'ingFull'
-        ingFull.textContent = `${igName} ${igQuantity} ${igUnit}`
-        
+        ingFull.textContent = `${igName} ${igQuantity} ${igUnit} `
+        // ingFull.append(addOneIngButton)
+
         recipeIngredientsList.append(ingFull)
     }
     detailsInstructions.append(recipeInstructions)
     detailsIngredients.append(recipeIngredientsList)
+    orContainer.prepend(recipeTitle)
     orContainer.append(addIngButton)
 
     // send ingredients from one-recipe to shopping-list
@@ -108,23 +125,43 @@ function showDetails(recipe) {
             const igName = rI[i].name
             const igQuantity = rI[i].quantity
             const igUnit = rI[i].unit
+            const removeIngButton = document.createElement('input')
         
             ingFull.className = 'ingFullSL'
             ingFull.textContent = `${igName} ${igQuantity} ${igUnit}`
-            
+            removeIngButton.type = 'submit'
+            removeIngButton.id = 'slIngRemove'
+            removeIngButton.className = `${igName}`
+            removeIngButton.value = 'x'
+
+            ingFull.prepend(removeIngButton)
+
             shoppingListContainer.append(ingFull)
         }
+        // makes the x button remove the correct list element
+        const xButton = document.querySelectorAll('#slIngRemove');
+        const listElements = document.querySelectorAll('.ingFullSL')
+        xButton.forEach(button => {
+            button.addEventListener('click', e => { 
+                console.log(button)
+                const buttonCL = button.classList
+                console.log(buttonCL)
+                console.log(listElements)
+                listElements.forEach(element => {
+                    console.log(element.textContent)
+                    if (element.textContent.includes(buttonCL)) {
+                        element.remove()
+                    }
+                })
+            })
+        })
     })
 }  
 
 
-// this function gets 'currentRecipe' which assigns the border, and removes it from the old "currentRecipe" when a new recipe is clicked
-const getAllCards = document.getElementsByClassName('one-saved-recipe')
-function removeCR(getAllCards) {
-    for (let i = 0; i < getAllCards.length; i++) {
-        getAllCards[i].classList.remove('currentRecipe')
-    }
-}
+
+
+
 
 
 // CSS related to the New Recipe Form
