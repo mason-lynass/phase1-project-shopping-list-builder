@@ -129,6 +129,7 @@ function showDetails(recipe) {
             const igUnit = rI[i].unit
             const removeIngButton = document.createElement('input')
             const allListItems = document.querySelectorAll('.ingFullSL')
+            let matchFound = 0
 
             ingFull.className = 'ingFullSL'
             ingFull.textContent = `${igName} ${igQuantity} ${igUnit}`
@@ -140,28 +141,45 @@ function showDetails(recipe) {
             // if the shopping list is empty
             if(allListItems.length > 0){
                 console.log('checking for doubles')
-                for (let i = 0; i < allListItems.length; i++) {
-                    // set = to instead of includes ??
-                    console.log(`trying to add ${igName}`)
-                        console.log(allListItems[i])
-                    if (allListItems[i].textContent.includes(igName)) {
-                        
-                        console.log('break')
-                        break
+                console.log(allListItems)
+                console.log(allListItems.length)
+                allListItems.forEach(item => {
+                    if (item.textContent.includes(igName)) {
+                        console.log(`it's a match!`)
+                        matchFound = 1
+                    } else {
+                        console.log('not a match')
                     }
-                    else if (i > allListItems.length) {
+                })
+                console.log(matchFound)
+                if (matchFound === 1) {
+                    console.log('we have this one already')
+                    console.log('---end of ingredient---')
+                } else {
                         ingFull.prepend(removeIngButton)
                         shoppingListContainer.append(ingFull)
-                    }
-                    else console.log('else')
-                    
+                        console.log('added ingredient')
+                        console.log('---end of ingredient---')
                 }
+                // for (let i = 0; i < allListItems.length; i++) {
+                //     // set = to instead of includes ??
+                //     console.log(`trying to add ${igName}`)
+                //         console.log(allListItems[i])
+                //     if (allListItems[i].textContent.includes(igName)) {
+                //         console.log('break')
+                //         break
+                //     }
+                //     else if (i > allListItems.length) {
+                //         ingFull.prepend(removeIngButton)
+                //         shoppingListContainer.append(ingFull)
+                //     }
+                //     else console.log('else')
+                // }
             } else {
                 console.log('list empty, adding new ingredients')
                 ingFull.prepend(removeIngButton)
                 shoppingListContainer.append(ingFull)
-                console.log(allListItems.length)
-            }
+            } 
             
         }
         // makes the x button remove the correct list element
@@ -181,6 +199,7 @@ function showDetails(recipe) {
                 })
             })
         })
+        console.log('END OF CLICK')
     })
 }  
 
