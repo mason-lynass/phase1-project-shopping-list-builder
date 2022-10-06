@@ -28,6 +28,10 @@ li {
     border-left: 1px solid black;
 }
 
+.lightblue {
+    background-color: rgb(76, 177, 205);
+}
+
 #top-section {
     display: flex;
     flex-flow: row nowrap;
@@ -108,7 +112,7 @@ li {
     width: 62%;
 }
 
-.sendToList {
+#sendToList-button {
     display: block;
     margin: 20px auto;
     height: 40px;
@@ -221,3 +225,4 @@ li {
     text-align: center;
     margin-left: 20px;
 }
+

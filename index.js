@@ -36,6 +36,7 @@ const renderOneRecipeCard = recipe => {
     recipeDeleteBtn.textContent = 'x'
     recipeDeleteBtn.className = 'delete-recipe'
 
+    addHoverEventToBtn(recipeDeleteBtn);
 
 // put the name, image, list of ingredients, and instructions in the card div
     recipeDiv.append(recipeName, recipeImage, recipeDeleteBtn)
@@ -95,6 +96,8 @@ function showDetails(recipe) {
     addIngButton.id = 'sendToList-button'
     addIngButton.value = 'Add Ingredients to Shopping List'
 
+    addHoverEventToBtn(addIngButton);
+
     // iterating through the ingredients to store them all in recipeIngredientsList
     const rI = recipe.ingredients
     
@@ -138,6 +141,9 @@ function showDetails(recipe) {
             removeIngButton.id = 'slIngRemove'
             removeIngButton.className = `${igName}`
             removeIngButton.value = 'x'
+
+            addHoverEventToBtn(removeIngButton);
+
 
             // check to see if shopping list is empty
             // if list is not empty, do this:
@@ -212,7 +218,23 @@ function addStrings(a, b) {
 }
 
 
+let allBtns = document.querySelectorAll('.btn');
+allBtns.forEach(btn => addHoverEventToBtn(btn));
 
+
+function addHoverEventToBtn(item) {
+    item.onmouseover = function(event) {
+        let target = event.target;
+        item.classList = 'lightblue';
+        // target.style.background = 'green';
+      };
+      
+      item.onmouseout = function(event) {
+        let target = event.target;
+        item.classList = '';
+        // target.style.background = '';
+      };
+}
 
 // CSS related to the New Recipe Form
 const form = document.getElementById('new-recipe-form');
@@ -260,15 +282,4 @@ function postNewRecipe(newRecipe) {
     .then(res => res.json())
     .then(renderOneRecipeCard(newRecipe))
     .catch((error) => {console.error('Error:', error)})
-}
-
-function deleteRecipeFromDatabase(id) {
-    fetch(`http://localhost:3000/Recipes/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(res => res.json)
-    .then(console.log(recipeDiv));
 }
