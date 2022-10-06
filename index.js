@@ -126,20 +126,21 @@ function showDetails(recipe) {
         for (let i = 0; i < rI.length; i++) {
             const ingFull = document.createElement('li')
             const igName = rI[i].name
-            const igQuantity = rI[i].quantity
+            let igQuantity = rI[i].quantity
             const igUnit = rI[i].unit
             const removeIngButton = document.createElement('input')
             const allListItems = document.querySelectorAll('.ingFullSL')
             let matchFound = 0
 
             ingFull.className = 'ingFullSL'
-            ingFull.textContent = `${igName} ${igQuantity} ${igUnit}`
+            ingFull.textContent = `${igName} ` + `${igQuantity} ` + `${igUnit}`
             removeIngButton.type = 'submit'
             removeIngButton.id = 'slIngRemove'
             removeIngButton.className = `${igName}`
             removeIngButton.value = 'x'
 
-            // if the shopping list is empty
+            // check to see if shopping list is empty
+            // if list is not empty, do this:
             if(allListItems.length > 0){
                 console.log('checking for doubles')
                 console.log(allListItems)
@@ -154,6 +155,20 @@ function showDetails(recipe) {
                 })
                 console.log(matchFound)
                 if (matchFound === 1) {
+                    allListItems.forEach(item => {
+                        if (item.textContent.includes(igName)) {
+                            let currentAmount = item.textContent.match(/\d+/)
+                            console.log(parseInt(currentAmount))
+                            console.log(parseInt(igQuantity))
+                            let newQuant = (parseInt(currentAmount) + parseInt(igQuantity))
+                            console.log(newQuant)
+                            console.log(item)
+                            item.textContent = `${igName} ` + `${newQuant} ` + `${igUnit}`
+                            item.prepend(removeIngButton)
+                        }
+                    
+                    })
+                    // console.log(igQuantity)
                     console.log('we have this one already')
                     console.log('---end of ingredient---')
                 } else {
@@ -162,7 +177,7 @@ function showDetails(recipe) {
                         console.log('added ingredient')
                         console.log('---end of ingredient---')
                 }
-            
+            // if it is empty, do this:
             } else {
                 console.log('list empty, adding new ingredients')
                 ingFull.prepend(removeIngButton)
@@ -192,7 +207,9 @@ function showDetails(recipe) {
 }  
 
 
-
+function addStrings(a, b) {
+    Number(a) + Number(b)
+}
 
 
 
