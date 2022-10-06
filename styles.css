@@ -50,8 +50,9 @@ li {
     margin: 5px auto;
 }
 
-.slIngRemove {
-    margin-right: 30px;
+#slIngRemove {
+    margin-right: 10%;
+    margin-left: 3%;
 }
 
 #or-container {
@@ -75,7 +76,7 @@ li {
 }
 
 #one-recipe li {
-    margin: 5px 5px 5px -20px;
+    margin: 5px 5px;
 }
 
 .noInfo {
