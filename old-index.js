@@ -25,7 +25,6 @@ function removeCR(getAllCards) {
 // making one recipe card
 const renderOneRecipeCard = recipe => {
     const recipeDiv = document.createElement('div')
-    const recipeWrapper = document.createElement('div')
     const recipeName = document.createElement('h3')
     const recipeImage = document.createElement('img')
     const recipeDeleteBtn = document.createElement('button')
@@ -37,11 +36,9 @@ const renderOneRecipeCard = recipe => {
     recipeDeleteBtn.textContent = 'x'
     recipeDeleteBtn.className = 'delete-recipe'
 
-    addHoverEventToBtn(recipeDeleteBtn);
 
 // put the name, image, list of ingredients, and instructions in the card div
-    recipeWrapper.append(recipeName, recipeImage)
-    recipeDiv.append(recipeWrapper, recipeDeleteBtn)
+    recipeDiv.append(recipeName, recipeImage, recipeDeleteBtn)
     // (recipeIngredientsTitle, recipeIngredientsList, recipeInstructionsTitle, recipeInstructions)
 
 // get the section and add the div to it
@@ -76,6 +73,8 @@ function showDetails(recipe) {
     // use these classes to change container height
     oneRecipe.classList.remove('noInfo')
     shoppingList.classList.remove('noInfo')
+    oneRecipe.classList.add('hasInfo')
+    shoppingList.classList.add('hasInfo')
     // replaces content already in the section with emptiness, so that new text can be put it
     detailsInstructions.innerHTML = ''
     detailsIngredients.innerHTML = ''
@@ -90,14 +89,11 @@ function showDetails(recipe) {
     recipeTitle.textContent = recipe.name
     recipeInstructions.textContent = recipe.instructions
 
-
     addIngButton.type = 'submit'
     addIngButton.className = 'orButton sendToList'
     addIngButton.name = 'sendToList-button'
     addIngButton.id = 'sendToList-button'
     addIngButton.value = 'Add Ingredients to Shopping List'
-
-    addHoverEventToBtn(addIngButton);
 
     // iterating through the ingredients to store them all in recipeIngredientsList
     const rI = recipe.ingredients
@@ -117,19 +113,6 @@ function showDetails(recipe) {
 
         recipeIngredientsList.append(ingFull)
     }
-    // addLineBreaks(recipeInstructions)
-    console.log(recipeInstructions.textContent.length)
-    if (recipeInstructions.textContent.length > 800) {
-        oneRecipe.classList.remove('hasInfo')
-    shoppingList.classList.remove('hasInfo')
-        oneRecipe.classList.add('hasBigInfo')
-        shoppingList.classList.add('hasBigInfo')
-    } else {
-        oneRecipe.classList.remove('hasBigInfo')
-        shoppingList.classList.remove('hasBigInfo')
-        oneRecipe.classList.add('hasInfo')
-        shoppingList.classList.add('hasInfo')
-    }
     detailsInstructions.append(recipeInstructions)
     detailsIngredients.append(recipeIngredientsList)
     orContainer.prepend(recipeTitle)
@@ -143,24 +126,20 @@ function showDetails(recipe) {
         for (let i = 0; i < rI.length; i++) {
             const ingFull = document.createElement('li')
             const igName = rI[i].name
-            let igQuantity = rI[i].quantity
+            const igQuantity = rI[i].quantity
             const igUnit = rI[i].unit
             const removeIngButton = document.createElement('input')
             const allListItems = document.querySelectorAll('.ingFullSL')
             let matchFound = 0
 
             ingFull.className = 'ingFullSL'
-            ingFull.textContent = `${igName} ` + `${igQuantity} ` + `${igUnit}`
+            ingFull.textContent = `${igName} ${igQuantity} ${igUnit}`
             removeIngButton.type = 'submit'
             removeIngButton.id = 'slIngRemove'
             removeIngButton.className = `${igName}`
             removeIngButton.value = 'x'
 
-            addHoverEventToBtn(removeIngButton);
-
-
-            // check to see if shopping list is empty
-            // if list is not empty, do this:
+            // if the shopping list is empty
             if(allListItems.length > 0){
                 console.log('checking for doubles')
                 console.log(allListItems)
@@ -175,20 +154,6 @@ function showDetails(recipe) {
                 })
                 console.log(matchFound)
                 if (matchFound === 1) {
-                    allListItems.forEach(item => {
-                        if (item.textContent.includes(igName)) {
-                            let currentAmount = item.textContent.match(/\d+/)
-                            console.log(parseInt(currentAmount))
-                            console.log(parseInt(igQuantity))
-                            let newQuant = (parseInt(currentAmount) + parseInt(igQuantity))
-                            console.log(newQuant)
-                            console.log(item)
-                            item.textContent = `${igName} ` + `${newQuant} ` + `${igUnit}`
-                            item.prepend(removeIngButton)
-                        }
-                    
-                    })
-                    // console.log(igQuantity)
                     console.log('we have this one already')
                     console.log('---end of ingredient---')
                 } else {
@@ -197,7 +162,7 @@ function showDetails(recipe) {
                         console.log('added ingredient')
                         console.log('---end of ingredient---')
                 }
-            // if it is empty, do this:
+            
             } else {
                 console.log('list empty, adding new ingredients')
                 ingFull.prepend(removeIngButton)
@@ -226,41 +191,11 @@ function showDetails(recipe) {
     })
 }  
 
-function addLineBreaks(text) {
-    // const addBreak = document.createElement('br')
-    // const someObject = `${addBreak}`
-    console.log(text.textContent)
-    text.textContent = String.raw`${text.textContent}`
-    
-    console.log(text.textContent)
-    // const regexpCoordinates = /\n/g;
-    // console.log(textToBreak.replaceAll(regexpCoordinates, someObject))
-    // textToBreak.replaceAll(regexpCoordinates, someObject)
-
-}
-
-function addStrings(a, b) {
-    Number(a) + Number(b)
-}
 
 
-let allBtns = document.querySelectorAll('.btn');
-allBtns.forEach(btn => addHoverEventToBtn(btn));
 
 
-function addHoverEventToBtn(item) {
-    item.onmouseover = function(event) {
-        let target = event.target;
-        // item.classList = 'lightblue';
-        target.style.background = 'lightblue';
-      };
-      
-      item.onmouseout = function(event) {
-        let target = event.target;
-        // item.classList = '';
-        target.style.background = '';
-      };
-}
+
 
 // CSS related to the New Recipe Form
 const form = document.getElementById('new-recipe-form');
@@ -308,4 +243,15 @@ function postNewRecipe(newRecipe) {
     .then(res => res.json())
     .then(renderOneRecipeCard(newRecipe))
     .catch((error) => {console.error('Error:', error)})
+}
+
+function deleteRecipeFromDatabase(id) {
+    fetch(`http://localhost:3000/Recipes/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => res.json)
+    .then(console.log(recipeDiv));
 }

@@ -1,9 +1,13 @@
+* {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 header {
     text-align: center;
     font-size: 40px;
     padding: 20px 0;
-    color: #D9E4EC;
-    background-color: #6AABD2;
+    color: #385E72;
+    background-color: #B7CFDC;
 }
 
 h1 {
@@ -19,26 +23,21 @@ h2 {
     padding:20px;
 }
 
-#saved-recipes-header {
-    background-color: #B7CFDC;
-}
-
 li {
     list-style-type: none;
 }
 
-.border {
+/* .border {
     border: 1px solid black;
-}
+} */
 
 .border-left {
-    border-left: 1px solid black;
+    border-left: 2px solid black;
 }
 
-.lightblue {
+/* .lightblue {
     background-color: #6AABD2;
-
-}
+} */
 
 #top-section {
     display: flex;
@@ -47,8 +46,10 @@ li {
 
 #shopping-list-container {
     width: 30%;
-    background-color: #D9E4EC;
-    color: #385E72;;
+    /* background-color: #D9E4EC;
+    color: #385E72; */
+    background-color: rgb(247, 240, 230);
+    color: #132935;
 }
 
 #shopping-list li {
@@ -61,10 +62,11 @@ li {
     flex-flow: row wrap;
     gap: 5px 5px;
     justify-content: space-evenly;
-    margin: 5px auto;
+    margin: 15px auto;
 }
 
 #sendListEmail {
+    height: 40px;
     background-color: #B7CFDC;
 }
 
@@ -83,8 +85,10 @@ li {
 
 #or-container {
     width: 70%;
-    background-color: #D9E4EC;
-    color: #385E72;
+    /* background-color: #D9E4EC;
+    color: #385E72; */
+    background-color: rgb(226, 233, 212);
+    color: black;
 }
 
 #one-recipe {
@@ -115,6 +119,10 @@ li {
     height: 320px;
 }
 
+.hasBigInfo {
+    height: 500px;
+}
+
 #orInstructions, #orIngredients {
     text-align: center;
 }
@@ -125,7 +133,8 @@ li {
 }
 
 #orInstructions {
-    width: 62%;
+    width: 50%;
+    margin: 0;
 }
 
 #sendToList-button {
@@ -136,25 +145,32 @@ li {
 
 /* CSS for the Saved Recipes */
 
+#saved-recipes-header {
+    background-color: #B7CFDC;
+}
+
 #all-saved-recipes {
     display: flex;
     flex-flow: row nowrap;
+    overflow: scroll;
     justify-content: center;
     align-items: top;
     padding-bottom: 30px;
 }
 
 #saved-recipes-container {
-    background-color: #D9E4EC;
+    background-color: whitesmoke;
     color: #385E72;
+    
 }
 
 .one-saved-recipe {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 250px;
     text-align: center;
     padding: 20px;
     margin: 20px;
+    background-color: #D9E4EC;
 }
 
 .one-saved-recipe h3 {
@@ -164,6 +180,10 @@ li {
 .one-saved-recipe img {
     width: 200px;
     height: 200px;
+}
+
+.delete-recipe {
+    margin: 10px 0 0 0;
 }
 
 .ingFull {
@@ -183,7 +203,8 @@ li {
     flex-flow: row nowrap;
     justify-content: center;
     width: 100%;
-    background-color: #B7CFDC;
+    /* background-color: #B7CFDC; */
+    background-color: rgb(226, 233, 212);
 }
 
 .nrAllIngredients {
@@ -208,6 +229,11 @@ select {
     background-color: #D9E4EC;
 }
 
+.fillColor{
+    background-color: #B7CFDC;
+    margin: 0 0 30px 0;
+}
+
 .nrIngredient {
     background-color: #D9E4EC;
 }
@@ -225,7 +251,7 @@ select {
 .btn {
     height: 5%;
     align-self: flex-end;
-    margin: 10px;
+    margin: 10px 10px 40px 10px;
 }
 
 .nrInstr {
