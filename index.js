@@ -25,6 +25,7 @@ function removeCR(getAllCards) {
 // making one recipe card
 const renderOneRecipeCard = recipe => {
     const recipeDiv = document.createElement('div')
+    const recipeWrapper = document.createElement('div')
     const recipeName = document.createElement('h3')
     const recipeImage = document.createElement('img')
     const recipeDeleteBtn = document.createElement('button')
@@ -39,7 +40,8 @@ const renderOneRecipeCard = recipe => {
     addHoverEventToBtn(recipeDeleteBtn);
 
 // put the name, image, list of ingredients, and instructions in the card div
-    recipeDiv.append(recipeName, recipeImage, recipeDeleteBtn)
+    recipeWrapper.append(recipeName, recipeImage)
+    recipeDiv.append(recipeWrapper, recipeDeleteBtn)
     // (recipeIngredientsTitle, recipeIngredientsList, recipeInstructionsTitle, recipeInstructions)
 
 // get the section and add the div to it
@@ -74,8 +76,6 @@ function showDetails(recipe) {
     // use these classes to change container height
     oneRecipe.classList.remove('noInfo')
     shoppingList.classList.remove('noInfo')
-    oneRecipe.classList.add('hasInfo')
-    shoppingList.classList.add('hasInfo')
     // replaces content already in the section with emptiness, so that new text can be put it
     detailsInstructions.innerHTML = ''
     detailsIngredients.innerHTML = ''
@@ -89,6 +89,7 @@ function showDetails(recipe) {
     recipeTitle.id = 'recipe-title'
     recipeTitle.textContent = recipe.name
     recipeInstructions.textContent = recipe.instructions
+
 
     addIngButton.type = 'submit'
     addIngButton.className = 'orButton sendToList'
@@ -115,6 +116,19 @@ function showDetails(recipe) {
         // ingFull.append(addOneIngButton)
 
         recipeIngredientsList.append(ingFull)
+    }
+    // addLineBreaks(recipeInstructions)
+    console.log(recipeInstructions.textContent.length)
+    if (recipeInstructions.textContent.length > 800) {
+        oneRecipe.classList.remove('hasInfo')
+    shoppingList.classList.remove('hasInfo')
+        oneRecipe.classList.add('hasBigInfo')
+        shoppingList.classList.add('hasBigInfo')
+    } else {
+        oneRecipe.classList.remove('hasBigInfo')
+        shoppingList.classList.remove('hasBigInfo')
+        oneRecipe.classList.add('hasInfo')
+        shoppingList.classList.add('hasInfo')
     }
     detailsInstructions.append(recipeInstructions)
     detailsIngredients.append(recipeIngredientsList)
@@ -212,6 +226,18 @@ function showDetails(recipe) {
     })
 }  
 
+function addLineBreaks(text) {
+    // const addBreak = document.createElement('br')
+    // const someObject = `${addBreak}`
+    console.log(text.textContent)
+    text.textContent = String.raw`${text.textContent}`
+    
+    console.log(text.textContent)
+    // const regexpCoordinates = /\n/g;
+    // console.log(textToBreak.replaceAll(regexpCoordinates, someObject))
+    // textToBreak.replaceAll(regexpCoordinates, someObject)
+
+}
 
 function addStrings(a, b) {
     Number(a) + Number(b)
