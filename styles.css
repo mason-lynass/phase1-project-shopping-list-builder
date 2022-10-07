@@ -109,7 +109,8 @@ li {
 }
 
 #orInstructions {
-    width: 62%;
+    width: 50%;
+    margin: 0;
 }
 
 #sendToList-button {

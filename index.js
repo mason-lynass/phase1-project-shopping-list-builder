@@ -225,14 +225,14 @@ allBtns.forEach(btn => addHoverEventToBtn(btn));
 function addHoverEventToBtn(item) {
     item.onmouseover = function(event) {
         let target = event.target;
-        item.classList = 'lightblue';
-        // target.style.background = 'green';
+        // item.classList = 'lightblue';
+        target.style.background = 'lightblue';
       };
       
       item.onmouseout = function(event) {
         let target = event.target;
-        item.classList = '';
-        // target.style.background = '';
+        // item.classList = '';
+        target.style.background = '';
       };
 }
 
